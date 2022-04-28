@@ -58,7 +58,7 @@ function arrsToTable(arrs, whereToDisplay) {
   document.getElementById(whereToDisplay).innerHTML = table
 }
 
-
+//test git
 
 //document.getElementById('dataTeacher').innerHTML = arrFromTeacher //вывод в html
 //document.getElementById('dataTeacher').innerHTML = arrFromStudent //вывод в html
