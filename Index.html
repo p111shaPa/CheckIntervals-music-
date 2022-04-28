@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Js-p111</title>
+    <style>
+      h1 {color: blue;}
+    </style>
+    <!-- <script src="checkIntervals.js"></script> -->
+    <script>
+    </script>
+  </head>
+  <body>
+
+    <h1>Проверка интервалов</h1>
+
+      <div>
+        <div>
+          <textarea
+            placeholder="Введите ваши 10 интервалов через запятую, формат б2\Б2\б.2\Б.2"
+            rows="2"
+            id="msgFromTeacher"
+            title=""
+            ></textarea>
+        </div>
+
+        <div>
+        <input
+          type="button"
+          value="Ввести"
+          onclick="getDataInputs('msgFromTeacher')"
+          ></input>
+        </div>
+
+        <div>
+          <textarea
+            placeholder="Введите ответы ученика (интервалы) через запятую, формат б2\Б2\б.2\Б.2"
+            rows="2"
+            id="msgFromStudent"
+            title=""
+            ></textarea>
+            <!-- сделать ограничение по вводу текста -->
+        </div>
+
+        <div>
+          <input
+            type="button"
+            value="Проверка"
+            onclick="getDataInputs('msgFromStudent')"
+            ></input>
+        </div>
+
+        <div id="numbersDiv">
+        </div>
+
+        <div id="yesnoDiv">
+            <tr>
+                <td>да</td>
+                <td>нет</td>
+                <td>да</td>
+            </tr>
+        </div>
+
+        <div id="dataTeacherDiv">
+          массив верных ответов (возможно стилизовать через css)
+        </div>
+
+        <div id="dataStudentDiv">
+          массив ответов ученика (тоже стил. в css)
+        </div>
+      </div>
+
+
+      <script src="checkIntervals.js"></script>
+  </body>
+</html>
