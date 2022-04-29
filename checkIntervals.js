@@ -19,11 +19,9 @@ function sortDataInputs (msgFrom) {
   if (msgFrom === 'msgFromTeacher') {
     dataTeacher = dataInput
     splitData(msgFrom)
-    // console.log(dataTeacher);
   } else if (msgFrom === 'msgFromStudent'){
     dataStudent = dataInput
     splitData(msgFrom)
-    // console.log(dataStudent);
   } else {
     console.log('error with function getDataInputs..');
   }
@@ -31,34 +29,51 @@ function sortDataInputs (msgFrom) {
 
 function splitData (msgFrom) {
   if (msgFrom === 'msgFromTeacher') {
-    arrFromTeacher = dataTeacher.split(', ')
-    console.log(arrFromTeacher);
+    arrFromTeacher = dataTeacher.split(', ') //добавить вариант делить по пустоте
+    console.log(`From function splitData: ${arrFromTeacher}`); //потом откл
+    arrsToTable(arrFromTeacher)
   } else if (msgFrom === 'msgFromStudent') {
     arrFromStudent = dataStudent.split(', ')
-    console.log(arrFromStudent);
+    console.log(`From function splitData: ${arrFromStudent}`); //потом откл
+    arrsToTable(arrFromStudent)
   } else {
     console.log('error with function splitData..');
   }
 }
 
+function compareArrays (arrFromTeacher, arrFromStudent) { //запускать где-то после нажатия на Проверить?
+  arrFromTeacher.length == arrFromStudent.length ? {} : console.log('From function compareArrays: Длинна массивов не равна.');
+  let yesNo = []
+  //нужно сравнить значения в массивах и поместить в yesNo "да" или "нет" (совпадения) по каждому значению
+  for (let i = 0; i < arrFromTeacher.length; i++) {
+
+  }
+}
+
 //сделать проверку первого окна, что данные введены, без этого не производить расчет
 
-function arrsToTable(arrs, whereToDisplay) {
+function arrsToTable(arrs) {
+  // console.log(arrs);
+  let table = '<tr>'
+  for (let i = 0; i < arrs.length; i++) {
+    table = table + `<td> ${arrs[i]} </td>`
+  }
+  table = table +'</tr>'
+  console.log(`From function arrsToTable: ${table}`) //потом откл
+}
+
+//для numbers будет arrsToTable(numbers)
+//для да/нет будет arrsToTable(********)
+
+
+function arrsToDisplayTables(whereToDisplay) {
+  document.getElementById(whereToDisplay).innerHTML = table
   //для numbers будет arrsToTable(numbers, 'numbersDiv')
   //для да/нет будет arrsToTable(********, 'yesnoDiv')
   //для массива верных ответов arrsToTable(arrFromTeacher, 'dataTeacherDiv')
   //для массива ответов ученика arrsToTable(arrFromStudent, 'dataStudentDiv')
-  let table = '<tr>'
-  for (let i = 0; i < arrs.length; i++) {
-    table = table + `<td> ${arrs[i]} </td>`
-
-  }
-  table = table +'</tr>'
-  // return table
-  document.getElementById(whereToDisplay).innerHTML = table
 }
-
-//test git
+//test push git
 
 //document.getElementById('dataTeacher').innerHTML = arrFromTeacher //вывод в html
 //document.getElementById('dataTeacher').innerHTML = arrFromStudent //вывод в html
