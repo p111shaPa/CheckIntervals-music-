@@ -3,14 +3,15 @@
 let dataInput
 let dataTeacher = ''
 let dataStudent = ''
-let arrFromTeacher = []
-let arrFromStudent = []
+let arrayTeacher = []
+let arrayStudent = []
 let numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] //вариант брать длинну из массива учителя
+let yesNo = []
 
 
 function getDataInputs (msgFrom) {
   dataInput = document.getElementById(msgFrom).value
-  sortDataInputs (msgFrom)
+  sortDataInputs (msgFrom) //на следующий шаг
 }
 
 //сделать проверку на пустые строки или маленькую заполненность
@@ -18,10 +19,10 @@ function getDataInputs (msgFrom) {
 function sortDataInputs (msgFrom) {
   if (msgFrom === 'msgFromTeacher') {
     dataTeacher = dataInput
-    splitData(msgFrom)
+    splitData(msgFrom) //на следующий шаг
   } else if (msgFrom === 'msgFromStudent'){
     dataStudent = dataInput
-    splitData(msgFrom)
+    splitData(msgFrom) //на следующий шаг
   } else {
     console.log('error with function getDataInputs..');
   }
@@ -29,54 +30,65 @@ function sortDataInputs (msgFrom) {
 
 function splitData (msgFrom) {
   if (msgFrom === 'msgFromTeacher') {
-    arrFromTeacher = dataTeacher.split(', ') //добавить вариант делить по пустоте
-    console.log(`From function splitData: ${arrFromTeacher}`); //потом откл
-    arrsToTable(arrFromTeacher)
+    arrayTeacher = dataTeacher.split(', ') //можно добавить вариант делить по пустоте
+    createTable(arrayTeacher) //на след. шаг
+    // console.log(`From function splitData: ${arrayTeacher}`);
   } else if (msgFrom === 'msgFromStudent') {
-    arrFromStudent = dataStudent.split(', ')
-    console.log(`From function splitData: ${arrFromStudent}`); //потом откл
-    arrsToTable(arrFromStudent)
+    arrayStudent = dataStudent.split(', ')
+    createTable(arrayStudent) //на след. шаг
+    compareArrays (arrayTeacher, arrayStudent) // на шаг сравнения
+    // console.log(`From function splitData: ${arrayStudent}`);
+
   } else {
     console.log('error with function splitData..');
   }
+  msgFrom === 'msgFromTeacher' ? createTable(numbers) : {} //если true, то создать таблицу с порядковыми номерами, основанную на длинне arrayTeacher
 }
 
-function compareArrays (arrFromTeacher, arrFromStudent) { //запускать где-то после нажатия на Проверить?
-  arrFromTeacher.length == arrFromStudent.length ? {} : console.log('From function compareArrays: Длинна массивов не равна.');
-  let yesNo = []
-  //нужно сравнить значения в массивах и поместить в yesNo "да" или "нет" (совпадения) по каждому значению
-  for (let i = 0; i < arrFromTeacher.length; i++) {
 
+function compareArrays (arrayTeacher, arrayStudent) {
+  if (arrayTeacher.length == arrayStudent.length) {
+    for (let i = 0; i < arrayTeacher.length; i++) { //сравнения значений в массивах и помещение в yesNo "да" или "нет" (совпадает ли) по каждому значению
+      if (arrayTeacher[i].toUpperCase() === arrayStudent[i].toUpperCase()) {
+        yesNo[i] = 'да'
+      } else if (arrayTeacher[i] !== arrayStudent[i]) {
+        yesNo[i] = 'нет'
+      }
+    }
+    createTable(yesNo) //на следующий шаг
   }
+  else {console.log('From function compareArrays: Длинна массивов не равна. Введите все варианты')}
+  // console.log(yesNo);
+  //переделать сообщение в else
 }
 
 //сделать проверку первого окна, что данные введены, без этого не производить расчет
 
-function arrsToTable(arrs) {
-  // console.log(arrs);
+
+function createTable(array) {
   let table = '<tr>'
-  for (let i = 0; i < arrs.length; i++) {
-    table = table + `<td> ${arrs[i]} </td>`
+  for (let i = 0; i < array.length; i++) {
+    table = table + `<td> ${array[i]} </td>`
   }
   table = table +'</tr>'
-  console.log(`From function arrsToTable: ${table}`) //потом откл
+  console.log(`From function createTable: ${table}`) //потом откл
 }
 
 //для numbers будет arrsToTable(numbers)
 //для да/нет будет arrsToTable(********)
 
 
-function arrsToDisplayTables(whereToDisplay) {
+function displayTables(whereToDisplay) {
   document.getElementById(whereToDisplay).innerHTML = table
   //для numbers будет arrsToTable(numbers, 'numbersDiv')
   //для да/нет будет arrsToTable(********, 'yesnoDiv')
-  //для массива верных ответов arrsToTable(arrFromTeacher, 'dataTeacherDiv')
-  //для массива ответов ученика arrsToTable(arrFromStudent, 'dataStudentDiv')
+  //для массива верных ответов arrsToTable(arrayTeacher, 'dataTeacherDiv')
+  //для массива ответов ученика arrsToTable(arrayStudent, 'dataStudentDiv')
 }
 //test push git
 
-//document.getElementById('dataTeacher').innerHTML = arrFromTeacher //вывод в html
-//document.getElementById('dataTeacher').innerHTML = arrFromStudent //вывод в html
+//document.getElementById('dataTeacher').innerHTML = arrayTeacher //вывод в html
+//document.getElementById('dataTeacher').innerHTML = arrayStudent //вывод в html
 
 
 //сделать таблицу (цифры первой строкой), чтобы каждое значение из массивов попадало в свою ячейку
