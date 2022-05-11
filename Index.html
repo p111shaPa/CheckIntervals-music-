@@ -3,74 +3,79 @@
   <head>
     <meta charset="utf-8" />
     <title>Js-p111</title>
-    <style>
-      h1 {color: blue;}
-    </style>
+
+    <link rel="stylesheet" href="css/css.css">
     <!-- <script src="checkIntervals.js"></script> -->
     <script>
     </script>
   </head>
   <body>
+    <div class="container">
 
-    <h1>Проверка интервалов</h1>
+      <h1>Проверка интервалов</h1>
+        <div class="blocks">
+          <div class="texts">
+            <textarea
+              class="textarea"
+              placeholder="Введите ваши 10 интервалов через запятую, формат ч1, Ч1, б2, Б2"
+              rows="2"
+              id="msgFromTeacher"
+              title=""
+              ></textarea>
+          </div>
 
-      <div>
-        <div>
-          <textarea
-            placeholder="Введите ваши 10 интервалов через запятую, формат б2, Б2"
-            rows="2"
-            id="msgFromTeacher"
-            title=""
-            ></textarea>
-        </div>
-
-        <div>
-        <input
-          type="button"
-          value="Ввести"
-          onclick="getDataInputs('msgFromTeacher')"
-          ></input>
-        </div>
-
-        <div>
-          <textarea
-            placeholder="Введите ответы ученика (интервалы) через запятую, формат б2, Б2"
-            rows="2"
-            id="msgFromStudent"
-            title=""
-            ></textarea>
-            <!-- сделать ограничение по вводу текста -->
-        </div>
-
-        <div>
+          <div class="btns">
           <input
             type="button"
-            value="Проверка"
-            onclick="getDataInputs('msgFromStudent')"
+            value="Ввести"
+            onclick="getDataInputs('msgFromTeacher')"
             ></input>
+          </div>
         </div>
 
-        <div id="numbersDiv">
+        <div class="blocks">
+          <div class="texts">
+            <textarea
+              class="textarea"
+              placeholder="Введите ответы ученика (интервалы) через запятую, формат ч1, Ч1, б2, Б2"
+              rows="2"
+              id="msgFromStudent"
+              title=""
+              ></textarea>
+              <!-- сделать ограничение по вводу текста -->
+          </div>
+
+          <div class="btns">
+            <input
+              type="button"
+              value="Проверка"
+              onclick="getDataInputs('msgFromStudent')"
+              ></input>
+          </div>
         </div>
 
-        <div id="yesnoDiv">
-            <tr>
-                <td>да</td>
-                <td>нет</td>
-                <td>да</td>
-            </tr>
+        <div id="compareArraysError">
+        </div>
+
+        <div>
+          <table
+            id="numbersDiv"
+            class="numbersDiv"
+          >
+          </table>
+        </div>
+
+        <div id="yesNoDiv">
         </div>
 
         <div id="dataTeacherDiv">
-          массив верных ответов (возможно стилизовать через css)
         </div>
 
         <div id="dataStudentDiv">
-          массив ответов ученика (тоже стил. в css)
         </div>
       </div>
 
-
       <script src="checkIntervals.js"></script>
+
   </body>
 </html>

@@ -1,0 +1,70 @@
+/* переставлял */
+.container {
+  margin: 0 15%
+}
+
+h1 {color: blue;}
+
+
+.textarea {
+  width: 85%;
+  height: 3em;
+  margin: 1em;
+  border: 0.07em solid #002d84;
+  border-radius: 4px;
+  padding: 0.4em; /* посмотреть*/
+  font-size: 1.6em;
+  text-align: center;
+  color: #000080;
+  resize: none;
+}
+
+.textarea:focus {
+  outline: 0.07em solid #002d84;
+}
+
+
+/* добавить autofocus */
+.blocks {
+  display: flex
+}
+
+.texts {
+  flex: 5;
+}
+
+.btns {
+  flex: 3;
+  margin: auto;
+}
+
+.btns input {
+  width: 7em;
+  border: 1px solid #004d00;
+  border-radius: 4px;
+  padding: 1em;
+  text-align: left; /* пока так */
+  font-size: 1em;
+  /* еще фон кнопок */
+}
+
+.numbersDiv {
+  margin: 1em;
+  width: 100%;
+  text-align: center;
+  border-radius: 4px;
+  font-size: 2em;
+  color: red;
+  border: 2px solid transparent;
+  border-collapse: collapse;
+
+}
+
+.numbersDiv2 td{
+  border: 1px solid #f00;
+
+  /* border-width: 0px 1px ; */
+
+
+  /* border-radius: 2px; */
+}

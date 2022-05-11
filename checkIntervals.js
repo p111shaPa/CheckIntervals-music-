@@ -5,9 +5,11 @@ let dataTeacher = ''
 let dataStudent = ''
 let arrayTeacher = []
 let arrayStudent = []
-let numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] //вариант брать длинну из массива учителя
+let numbers
 let yesNo = []
+let table
 
+console.log(arrayTeacher.length);
 
 function getDataInputs (msgFrom) {
   dataInput = document.getElementById(msgFrom).value
@@ -32,6 +34,7 @@ function splitData (msgFrom) {
   if (msgFrom === 'msgFromTeacher') {
     arrayTeacher = dataTeacher.split(', ') //можно добавить вариант делить по пустоте
     createTable(arrayTeacher) //на след. шаг
+    addNumbers() //добавить числа в numbers на основе длинны arrayTeacher
     // console.log(`From function splitData: ${arrayTeacher}`);
   } else if (msgFrom === 'msgFromStudent') {
     arrayStudent = dataStudent.split(', ')
@@ -40,14 +43,19 @@ function splitData (msgFrom) {
     // console.log(`From function splitData: ${arrayStudent}`);
 
   } else {
-    console.log('error with function splitData..');
+    console.log('error (msg from function splitData..)');
   }
-  msgFrom === 'msgFromTeacher' ? createTable(numbers) : {} //если true, то создать таблицу с порядковыми номерами, основанную на длинне arrayTeacher
 }
 
+function addNumbers () {
+  numbers = []
+  for (let i = 1; i <= arrayTeacher.length; i++)
+  numbers[numbers.push()] = i
+  createTable(numbers)
+}
 
 function compareArrays (arrayTeacher, arrayStudent) {
-  if (arrayTeacher.length == arrayStudent.length) {
+  if (arrayTeacher.length === arrayStudent.length) {
     for (let i = 0; i < arrayTeacher.length; i++) { //сравнения значений в массивах и помещение в yesNo "да" или "нет" (совпадает ли) по каждому значению
       if (arrayTeacher[i].toUpperCase() === arrayStudent[i].toUpperCase()) {
         yesNo[i] = 'да'
@@ -57,38 +65,40 @@ function compareArrays (arrayTeacher, arrayStudent) {
     }
     createTable(yesNo) //на следующий шаг
   }
-  else {console.log('From function compareArrays: Длинна массивов не равна. Введите все варианты')}
+  else {
+    console.log('From function compareArrays: Длинна массивов не равна. Введите все варианты')
+    displayTables(compareArraysError)
+  }
   // console.log(yesNo);
-  //переделать сообщение в else
+
 }
 
-//сделать проверку первого окна, что данные введены, без этого не производить расчет
-
-
 function createTable(array) {
-  let table = '<tr>'
+  table = '<tr class="numbersDiv2">'
   for (let i = 0; i < array.length; i++) {
     table = table + `<td> ${array[i]} </td>`
   }
   table = table +'</tr>'
-  console.log(`From function createTable: ${table}`) //потом откл
+  console.log(`From function createTable: ${table}`) //потом можно откл
+  displayTables(array)
 }
 
 //для numbers будет arrsToTable(numbers)
 //для да/нет будет arrsToTable(********)
+// document.getElementById('numbersDiv').innerHTML = table
 
-
-function displayTables(whereToDisplay) {
-  document.getElementById(whereToDisplay).innerHTML = table
-  //для numbers будет arrsToTable(numbers, 'numbersDiv')
-  //для да/нет будет arrsToTable(********, 'yesnoDiv')
-  //для массива верных ответов arrsToTable(arrayTeacher, 'dataTeacherDiv')
-  //для массива ответов ученика arrsToTable(arrayStudent, 'dataStudentDiv')
+function displayTables(whatToDisplay) {
+  if (whatToDisplay === numbers) {
+    document.getElementById('numbersDiv').innerHTML = table
+  } else if (whatToDisplay === yesNo){
+    document.getElementById('yesNoDiv').innerHTML = table
+  } else if (whatToDisplay === arrayTeacher) {
+    document.getElementById('dataTeacherDiv').innerHTML = table
+  } else if (whatToDisplay === arrayStudent) {
+    document.getElementById('dataStudentDiv').innerHTML = table}
+    else if (whatToDisplay === compareArraysError) {
+    document.getElementById('compareArraysError').innerHTML = 'Введите корректно количество ответов.'
+  } else {
+    document.getElementById('Ошибка').innerHTML = 'Error'
+  }
 }
-//test push git
-
-//document.getElementById('dataTeacher').innerHTML = arrayTeacher //вывод в html
-//document.getElementById('dataTeacher').innerHTML = arrayStudent //вывод в html
-
-
-//сделать таблицу (цифры первой строкой), чтобы каждое значение из массивов попадало в свою ячейку
