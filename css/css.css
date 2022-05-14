@@ -2,21 +2,32 @@
 .container {
   margin: 0 15%
 }
+/* @font-face {
+  font-family: 'Roboto Flex', sans-serif;
+  url('https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,200;8..144,400&display=swap');
+} */
 
-h1 {color: blue;}
+h1 {
+  color: blue;
+  margin-bottom: 1em;
+  font-family: 'Roboto Flex', sans-serif;
+}
+
 
 
 .textarea {
   width: 85%;
-  height: 3em;
+  height: 45%;
   margin: 1em;
   border: 0.07em solid #002d84;
   border-radius: 4px;
-  padding: 0.4em; /* посмотреть*/
-  font-size: 1.6em;
+  padding: 0.5em; /* посмотреть*/
+  font-family: 'Roboto Flex', sans-serif;
+  font-size: 1.3em;
   text-align: center;
   color: #000080;
   resize: none;
+  line-height: 1.3em
 }
 
 .textarea:focus {
@@ -40,16 +51,26 @@ h1 {color: blue;}
 
 .btns input {
   width: 7em;
-  border: 1px solid #004d00;
-  border-radius: 4px;
+  border: 1px solid #fff;
+  border-radius: 50px;
   padding: 1em;
-  text-align: left; /* пока так */
-  font-size: 1em;
-  /* еще фон кнопок */
+  text-align: center;
+  font-size: 1.2em;
+  /* еще фон кнопок и отображение нажатия*/
+  background-color: #a5e9c1;
+  font-family: 'Roboto Flex', sans-serif;
+  transition-duration: 500ms;
 }
 
-.numbersDiv {
-  margin: 1em;
+.btns input:hover {
+  /* border:  1px solid #00802b; */
+  background-color: #71b98b;
+  transition-duration: 500ms;
+}
+
+
+.numbersDiv{
+  margin: 0.5em;
   width: 100%;
   text-align: center;
   border-radius: 4px;
@@ -57,14 +78,20 @@ h1 {color: blue;}
   color: red;
   border: 2px solid transparent;
   border-collapse: collapse;
-
 }
 
-.numbersDiv2 td{
+.numbersDiv2 td{ /*в js*/
   border: 1px solid #f00;
+  border-top: none;
+  border-bottom: none
 
   /* border-width: 0px 1px ; */
 
 
   /* border-radius: 2px; */
+}
+
+.colorForVariantNo {
+  background-color: #b3cdff
+  /* background-color: rgb(176, 196, 206) */
 }

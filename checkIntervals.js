@@ -8,6 +8,8 @@ let arrayStudent = []
 let numbers
 let yesNo = []
 let table
+let tableYesNo = []
+
 
 console.log(arrayTeacher.length);
 
@@ -70,35 +72,53 @@ function compareArrays (arrayTeacher, arrayStudent) {
     displayTables(compareArraysError)
   }
   // console.log(yesNo);
-
 }
 
 function createTable(array) {
-  table = '<tr class="numbersDiv2">'
-  for (let i = 0; i < array.length; i++) {
-    table = table + `<td> ${array[i]} </td>`
+  if (array === yesNo) {
+    for (let i = 0; i < array.length; i++) {
+      tableYesNo[i] = `<td> ${array[i]} </td>`
+    }
+    addClassColorForVariantNo(tableYesNo)
   }
-  table = table +'</tr>'
-  console.log(`From function createTable: ${table}`) //потом можно откл
-  displayTables(array)
+  else {
+    table = ''
+    for (let i = 0; i < array.length; i++) {
+      table = table + `<td> ${array[i]} </td>`
+    }
+    displayTables(array) //на следующий шаг
+
+  }
+// console.log(`From function createTable: ${table}`) //потом можно откл
 }
 
-//для numbers будет arrsToTable(numbers)
-//для да/нет будет arrsToTable(********)
-// document.getElementById('numbersDiv').innerHTML = table
+function addClassColorForVariantNo (array) { //добавляем class="colorForVariantNo"
+    for (let i = 0; i < array.length; i++) {
+    // array[i] === "<td> нет </td>" ? array[i] = '<td class="colorForVariantNo"> нет </td>' : continue
+      if (array[i] === '<td> нет </td>') {
+        array[i] = '<td class="colorForVariantNo"> нет </td>'
+      }
+      else {
+        continue
+      }
+    }
+    table = tableYesNo.join('')
+    displayTables(tableYesNo) //на следующий шаг
+  }
+
 
 function displayTables(whatToDisplay) {
   if (whatToDisplay === numbers) {
-    document.getElementById('numbersDiv').innerHTML = table
-  } else if (whatToDisplay === yesNo){
-    document.getElementById('yesNoDiv').innerHTML = table
+    document.getElementById('numbersDisplay').innerHTML = table
+  } else if (whatToDisplay === tableYesNo){
+    document.getElementById('yesNoDisplay').innerHTML = table
   } else if (whatToDisplay === arrayTeacher) {
-    document.getElementById('dataTeacherDiv').innerHTML = table
+    document.getElementById('dataTeacherDisplay').innerHTML = table
   } else if (whatToDisplay === arrayStudent) {
-    document.getElementById('dataStudentDiv').innerHTML = table}
+    document.getElementById('dataStudentDisplay').innerHTML = table}
     else if (whatToDisplay === compareArraysError) {
     document.getElementById('compareArraysError').innerHTML = 'Введите корректно количество ответов.'
   } else {
-    document.getElementById('Ошибка').innerHTML = 'Error'
+    console.log('Ошибка')
   }
 }

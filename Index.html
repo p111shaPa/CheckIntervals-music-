@@ -3,7 +3,9 @@
   <head>
     <meta charset="utf-8" />
     <title>Js-p111</title>
-
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,200;8..144,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/css.css">
     <!-- <script src="checkIntervals.js"></script> -->
     <script>
@@ -12,7 +14,7 @@
   <body>
     <div class="container">
 
-      <h1>Проверка интервалов</h1>
+      <h1>Проверка музыкальных интервалов (сравнение ответов)</h1>
         <div class="blocks">
           <div class="texts">
             <textarea
@@ -21,6 +23,7 @@
               rows="2"
               id="msgFromTeacher"
               title=""
+              autofocus
               ></textarea>
           </div>
 
@@ -58,24 +61,15 @@
         </div>
 
         <div>
-          <table
-            id="numbersDiv"
-            class="numbersDiv"
-          >
+          <table class="numbersDiv numbersDiv2">
+            <tr id="numbersDisplay"></tr>
+            <tr id="yesNoDisplay"></tr>
+            <tr id="dataStudentDisplay"></tr>
+            <tr id="dataTeacherDisplay"></tr>
           </table>
         </div>
 
-        <div id="yesNoDiv">
-        </div>
-
-        <div id="dataTeacherDiv">
-        </div>
-
-        <div id="dataStudentDiv">
-        </div>
-      </div>
 
       <script src="checkIntervals.js"></script>
-
   </body>
 </html>
