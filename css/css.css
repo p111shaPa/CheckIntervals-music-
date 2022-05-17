@@ -2,18 +2,12 @@
 .container {
   margin: 0 15%
 }
-/* @font-face {
-  font-family: 'Roboto Flex', sans-serif;
-  url('https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,200;8..144,400&display=swap');
-} */
 
 h1 {
   color: blue;
   margin-bottom: 1em;
   font-family: 'Roboto Flex', sans-serif;
 }
-
-
 
 .textarea {
   width: 85%;
@@ -34,8 +28,6 @@ h1 {
   outline: 0.07em solid #002d84;
 }
 
-
-/* добавить autofocus */
 .blocks {
   display: flex
 }
@@ -56,7 +48,6 @@ h1 {
   padding: 1em;
   text-align: center;
   font-size: 1.2em;
-  /* еще фон кнопок и отображение нажатия*/
   background-color: #a5e9c1;
   font-family: 'Roboto Flex', sans-serif;
   transition-duration: 500ms;
@@ -67,7 +58,6 @@ h1 {
   background-color: #71b98b;
   transition-duration: 500ms;
 }
-
 
 .numbersDiv{
   margin: 0.5em;
@@ -84,14 +74,16 @@ h1 {
   border: 1px solid #f00;
   border-top: none;
   border-bottom: none
-
-  /* border-width: 0px 1px ; */
-
-
-  /* border-radius: 2px; */
 }
 
 .colorForVariantNo {
   background-color: #b3cdff
   /* background-color: rgb(176, 196, 206) */
+}
+
+.compareArraysError {
+  margin-left: 2em;
+  font-family: 'Roboto Flex', sans-serif;
+  font-size: 1.5em;
+  color: green;
 }

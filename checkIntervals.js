@@ -89,12 +89,11 @@ function createTable(array) {
     displayTables(array) //на следующий шаг
 
   }
-// console.log(`From function createTable: ${table}`) //потом можно откл
+// console.log(`From function createTable: ${table}`)
 }
 
 function addClassColorForVariantNo (array) { //добавляем class="colorForVariantNo"
     for (let i = 0; i < array.length; i++) {
-    // array[i] === "<td> нет </td>" ? array[i] = '<td class="colorForVariantNo"> нет </td>' : continue
       if (array[i] === '<td> нет </td>') {
         array[i] = '<td class="colorForVariantNo"> нет </td>'
       }
